@@ -48,4 +48,5 @@ const EvaluationSchema = new Schema({
     }
   });
   
-  export default model('Evaluation', EvaluationSchema);
+  const Evaluation = model('Evaluation', EvaluationSchema);
+  export default Evaluation;

@@ -33,4 +33,5 @@ const WorkLocationSchema = new Schema({
     }
   });
   
-  export default model('WorkLocation', WorkLocationSchema);
+  const WorkLocation = model('WorkLocation', WorkLocationSchema);
+  export default WorkLocation;

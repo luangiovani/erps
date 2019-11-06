@@ -1,5 +1,7 @@
 import { Schema, model } from 'mongoose';
 import { validator } from 'validator';
+const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
 
 const EmployeeSchema = new Schema({
     master_employee_id: { 
@@ -79,7 +81,45 @@ const EmployeeSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Employee',
         required: false
-    }
+    },
+    tokens: [{
+        token: {
+            type: String,
+            required: true
+        }
+    }]
   });
   
-  export default model('Employee', EmployeeSchema);
+EmployeeSchema.pre('save', async function (next) {
+    // Hash the password before saving the employee model
+    const employee = this
+    if (employee.isModified('password')) {
+        employee.password = await bcrypt.hash(employee.password, 8)
+    }
+    next()
+})
+
+EmployeeSchema.methods.generateAuthToken = async function() {
+    // Generate an auth token for the employee
+    const employee = this
+    const token = jwt.sign({_id: employee._id}, process.env.JWT_KEY)
+    employee.tokens = employee.tokens.concat({token})
+    await employee.save()
+    return token
+}
+
+EmployeeSchema.statics.findByCredentials = async (email, password) => {
+    // Search for a employee by email and password.
+    const employee = await employee.findOne({ email })
+    if (!employee) {
+        throw new Error({ error: 'Invalid login credentials' })
+    }
+    const isPasswordMatch = await bcrypt.compare(password, employee.password)
+    if (!isPasswordMatch) {
+        throw new Error({ error: 'Invalid login credentials' })
+    }
+    return employee
+}
+
+const Employee = model('Employee', EmployeeSchema);
+export default Employee;

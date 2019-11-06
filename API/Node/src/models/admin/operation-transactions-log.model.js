@@ -46,4 +46,5 @@ const OperationTransactionsLogSchema = new Schema({
     }
   });
   
-  export default model('OperationTransactionsLog', OperationTransactionsLogSchema);
+  const OperationTransactionsLog = model('OperationTransactionsLog', OperationTransactionsLogSchema);
+  export default OperationTransactionsLog;

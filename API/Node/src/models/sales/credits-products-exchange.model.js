@@ -107,4 +107,5 @@ const CreditsProductsExchangeSchema = new Schema({
     }
   });
   
-  export default model('CreditsProductsExchange', CreditsProductsExchangeSchema);
+  const CreditsProductsExchange = model('CreditsProductsExchange', CreditsProductsExchangeSchema);
+  export default CreditsProductsExchange;

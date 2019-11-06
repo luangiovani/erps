@@ -34,4 +34,5 @@ const StatusValuesSchema = new Schema({
     }
   });
   
-  export default model('StatusValues', StatusValuesSchema);
+  const StatusValues = model('StatusValues', StatusValuesSchema);
+  export default StatusValues;

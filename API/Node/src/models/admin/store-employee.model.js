@@ -40,4 +40,5 @@ const StoreEmployeeSchema = new Schema({
     }
   });
   
-  export default model('StoreEmployee', StoreEmployeeSchema);
+  const StoreEmployee = model('StoreEmployee', StoreEmployeeSchema);
+  export default StoreEmployee;

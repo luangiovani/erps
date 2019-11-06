@@ -1,19 +1,16 @@
-import express from 'express';
-import { connect, connection } from 'mongoose';
-
+const express = require('express');
+const mongoose = require('mongoose');
 require('dotenv').config();
 
 // App
 const app = express();
 // Database
-connect(process.env.DATABASE_CONNECTION_STRING, {
+mongoose.connect(process.env.DATABASE_CONNECTION_STRING, {
     useNewUrlParser: true,
-    useFindAndModify: true,
-    useCreateIndex: true,
     useUnifiedTopology: true
 });
 
-const db = connection;
+const db = mongoose.connection;
   
 db.on('connected', () => {
     console.log('Mongoose default connection is open');
@@ -37,7 +34,7 @@ process.on('SIGINT', () => {
 });
 
 // Load routes
-import indexRoutes from './routes/index-routes';
+const indexRoutes = require('./routes/index-routes');
 app.use('/', indexRoutes);
 
-export default app;
+module.exports = app;

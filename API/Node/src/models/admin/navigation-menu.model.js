@@ -54,4 +54,5 @@ const NavigationMenuSchema = new Schema({
     }
   });
   
-  export default model('NavigationMenu', NavigationMenuSchema);
+  const NavigationMenu = model('NavigationMenu', NavigationMenuSchema);
+  export default NavigationMenu;

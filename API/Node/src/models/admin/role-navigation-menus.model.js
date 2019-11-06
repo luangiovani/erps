@@ -47,4 +47,5 @@ const RoleNavigationMenusSchema = new Schema({
     }
   });
   
-  export default model('RoleNavigationMenus', RoleNavigationMenusSchema);
+  const RoleNavigationMenus = model('RoleNavigationMenus', RoleNavigationMenusSchema);
+  export default RoleNavigationMenus;

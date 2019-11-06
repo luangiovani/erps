@@ -1,5 +1,5 @@
-import app, { set } from '../src/app';
-import { createServer } from 'http';
+const app = require('../src/app');
+const http = require('http');
 const debug = require('debug')('nodestr:server');
 
 // PORT // based on express-generator
@@ -18,7 +18,7 @@ function normalizePort(val) {
 }
 
 const port = normalizePort(process.env.PORT || 3000);
-set('port', port);
+app.set('port', port);
 
 // error handler
 function onError(error) {
@@ -50,7 +50,7 @@ function onListening() {
 }
 
 // server
-const server = createServer(app);
+const server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);

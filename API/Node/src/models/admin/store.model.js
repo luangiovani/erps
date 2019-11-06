@@ -37,4 +37,5 @@ const StoreSchema = new Schema({
     }
   });
   
-  export default model('Store', StoreSchema);
+  const Store = model('Store', StoreSchema);
+  export default Store;

@@ -29,4 +29,5 @@ const StatusTypesSchema = new Schema({
     }
   });
   
-  export default model('StatusTypes', StatusTypesSchema);
+  const StatusTypes = model('StatusTypes', StatusTypesSchema);
+  export default StatusTypes;

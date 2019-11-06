@@ -37,4 +37,5 @@ const ConversionRateSchema = new Schema({
     }
   });
   
-  export default model('ConversionRate', ConversionRateSchema);
+const ConversionRate = model('ConversionRate', ConversionRateSchema);
+export default ConversionRate;

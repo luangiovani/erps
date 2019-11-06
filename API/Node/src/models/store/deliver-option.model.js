@@ -37,4 +37,5 @@ const DeliverOptionSchema = new Schema({
     }
   });
   
-  export default model('DeliverOption', DeliverOptionSchema);
+  const DeliverOption = model('DeliverOption', DeliverOptionSchema);
+  export default DeliverOption;

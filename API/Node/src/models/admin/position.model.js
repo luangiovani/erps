@@ -42,4 +42,5 @@ const PositionSchema = new Schema({
     }
   });
   
-  export default model('Position', PositionSchema);
+  const Position = model('Position', PositionSchema);
+  export default Position;

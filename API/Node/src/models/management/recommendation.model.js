@@ -53,4 +53,5 @@ const RecommendationSchema = new Schema({
     }
   });
   
-  export default model('Recommendation', RecommendationSchema);
+  const Recommendation = model('Recommendation', RecommendationSchema);
+  export default Recommendation;

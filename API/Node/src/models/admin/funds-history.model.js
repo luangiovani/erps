@@ -50,4 +50,5 @@ const FundsHistorySchema = new Schema({
     }
   });
   
-  export default model('FundsHistory', FundsHistorySchema);
+const FundsHistory = model('FundsHistory', FundsHistorySchema);
+export default FundsHistory;
